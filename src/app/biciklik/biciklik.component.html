@@ -1,0 +1,30 @@
+<!-- biciklik.component.html -->
+
+<div>
+    <select [(ngModel)]="selectedCategory" (change)="onCategorySelect()">
+      <option value="all">All categories</option>
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+  </div>
+  
+  <div class="container mt-3">
+    <div class="row mt-4">
+      <div class="col-md-3 mb-4" *ngFor="let termek of filteredProducts; let i = index">
+        <div class="card">
+          <img *ngIf="termek.kep" [src]="termek.kep" class="card-img-top img-fluid termek-image-home" alt="Product Image">
+          <div class="card-body">
+            <h5 class="card-title">{{ termek.termek_nev }}</h5>
+            <p class="card-text">Category: {{ termek.termek_kateg }}</p>
+            <p class="card-text">Manufacturer ID: {{ termek.gyarto_id }}</p>
+            <p class="card-text">Inventory Quantity: {{ termek.raktarondb }}</p>
+            <p class="card-text">Weight: {{ termek.tomeg_erteke }} kg</p>
+            <p class="card-text">Color: {{ termek.szine }}</p>
+            <p class="card-text">Description: {{ termek.leiras }}</p>
+            <p class="card-text">Price: {{ termek.egyseg_ar }} Ft</p>
+            <p class="card-text">Availability: {{ termek.elerheto ? 'Available' : 'Not Available' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
